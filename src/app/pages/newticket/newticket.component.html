@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Ticket
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="">select severity</label>
+                        <select class="form-select" >
+                            <option value="">select severity</option>
+                            <option value="">Low</option>
+                            <option value="">Medium</option>
+                            <option value="">High</option>
+                            <option value="">Critical</option>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="">Select Department</label>
+                        <select class="form-select">
+                            <option value="">Select Department</option>
+                            @for (item of departmentList; track $index) {
+                                <option [value]="item">{{item}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-3">
+                        <label for="">Select Parent Category</label>
+                        <select class="form-select">
+                            <option value="">--none--</option>
+                            @for (item of parentCategoryList; track $index) {
+                                <option [value]="item">{{item}}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="">select Child Category</label>
+                    <select class="form-select" name="" id="">
+                        <option value="">--none--</option>
+                        @for (item of childCategory; track $index) {
+                            <option [value]="item">{{item}}</option>
+                        }
+                    </select>
+
+                    </div>
+
+                    
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col-6">
+                        <label for="">Request Details</label>
+                        <textarea class="form-control" name="" id=""></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-success" (click)="oncreateTicket()">Save Ticket</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

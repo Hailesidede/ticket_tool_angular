@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+            Parent Category List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SR No</th>
+                                    <th>Category Name</th>
+                                    <th>DepartmentName</th>
+                                    <th>Created Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of categoryList; track $index) {
+                                    <tr>
+                                        <td>{{$index}}</td>
+                                        <td>{{item.categoryName}}</td>
+                                        <td>{{item.deptId}}</td>
+                                        <td>{{item.departmentName}}</td>
+                                        <td>{{item.createdDate}}</td>
+                                        <td>
+                                            <button class="btn btn-primary" (click)="editDepart(item)">Edit</button>
+                                            <button class="btn btn-danger" (click)="ondelete(item.categoryName)">Delete</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+               Create Department
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">CategoryName</label>
+                        <input type="text" [(ngModel)]="categoryObj.categoryName" class="form-control" name="" id="">
+                    </div>
+                    <div class="col-12">
+                        <label for="">DepartmentName</label>
+                        <input type="text" [(ngModel)]="categoryObj.departmentName" class="form-control" name="" id="">
+
+                    </div>
+
+                    <div class="col-12">
+                        <label for="">DepartmentId</label>
+                        <input type="text" [(ngModel)]="categoryObj.deptId" class="form-control" name="" id="">
+
+                    </div>
+                    
+                    @if (categoryObj.categoryName == "") {
+                        <div class="col-12">
+                            <label for="">CreatedDate</label>
+                            <input type="date" [(ngModel)]="categoryObj.createdDate" class="form-control" name="" id="">
+                        </div>
+                    }
+                       
+
+                    
+                    
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6">
+                        <button class="btn btn-secondary text-center">Cancel</button>
+                    </div>
+                    <div class="col-6">
+                        @if (categoryObj.categoryName == "") {
+                            <button class="btn btn-success text-center" (click)="saveCategory()">Save</button>
+                        }@else {
+                            <button class="btn btn-warning text-center" (click)="updateDepart()">update department</button>
+                        }
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
